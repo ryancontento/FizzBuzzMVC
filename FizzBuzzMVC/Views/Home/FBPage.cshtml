@@ -1,0 +1,49 @@
+﻿@model FizzBuzzMVC.Models.FizzBuzz
+
+<div class="container mt-5">
+    <div class="row row-cols-1 row-cols-lg-2">
+        <div class="col-lg-4 border-end border-3">
+            <h1 class="display-5 fw-bold 1h-1 mb-3">FizzBuzz: A Coding Project</h1>
+            <p>
+                Write a program that prints the numbers 1 to 100 and for multiples of 3
+                display <strong>"Fizz"</strong> instead of the number and for multiples of
+                5 display <strong>"Buzz"</strong>. If a multiple of both, display <strong>"FizzBuzz"</strong>.
+            </p>
+            <h3>Instructions</h3>
+            <p>Input a "Fizz" and "Buzz" value then hit enter!</p>
+        </div>
+        <div class="col-lg-8">
+            <h5>Enter Values</h5>
+            <form asp-controller="Home" asp-action="FBPage" method="post">
+                <div class="form-group">
+                    <label asp-for="FizzValue">Fizz Value</label>
+                    <input type="number" asp-for="FizzValue" class="form-control" placeholder="Enter Fizz Value" value="@Model.FizzValue" />
+                 </div>
+                 <div class="form-group">
+                    <label asp-for="BuzzValue">Buzz Value</label>
+                    <input type="number" asp-for="BuzzValue" class="form-control" placeholder="Enter Buzz Value" value="@Model.BuzzValue" />
+                </div>
+                    <button type="submit" class="btn btn-dark">Submit</button>
+            </form>
+            <h2 class="mt-5 border-bottom border-3">Results</h2>
+            <div class="table-responsive">
+            @*Table goes here*@
+
+            @if (Model.Result.Count > 0)
+                {
+                    <table class="table-stripe table-hover table table-dark">
+                        <thread>
+                            <tr><th colspan="5">FizzBuzz Results</th></tr>
+                        </thread>
+                        @for (int i = 0; i < Model.Result.Count; i += 5)
+                        {
+                            <tr><td>@Model.Result[i]</td><td>@Model.Result[i + 1]</td><td>@Model.Result[i + 2]</td><td>@Model.Result[i + 3]</td><td>@Model.Result[i + 4]</td></tr>
+                        }
+                    </table>
+                }
+
+            </div>
+        </div>
+    </div>
+</div>
+                  
